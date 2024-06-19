@@ -121,45 +121,10 @@ void hapusTengah(int posisi){
     delete del;
 }
 
-void ubahProduk(string produk, int hargaBaru, int stokBaru, int posisi) {
-    cur = head;
-    int nomor = 1;
-    while (nomor < posisi) {
-        cur = cur->next;
-        nomor++;
-    }
-
+void ubahProduk(string produk, int hargaBaru, int stokBaru) {
     cur->produk = produk;
     cur->harga = hargaBaru;
     cur->stok = stokBaru;
-}
-
-void ubahDepan(string produk, int harga, int stok){
-
-    head->produk = produk;
-    head->harga = harga;
-    head->stok = stok;
-}
-
-void ubahBelakang(string produk, int harga, int stok){
-
-    tail->produk = produk;
-    tail->harga = harga;
-    tail->stok = stok;    
-}
-
-void ubahTengah(string produk, int harga, int stok, int posisi){
-
-    cur = head;
-    int nomor = 1;
-    while(nomor < posisi){
-        cur = cur->next;
-        nomor++;
-    }
-
-    cur->produk = produk;
-    cur->harga = harga;
-    cur->stok = stok; 
 }
 
 void cariProduk(string produk) {
@@ -192,7 +157,8 @@ void totalHarga(){
         total += cur->harga*cur->stok;
         cur = cur->next;
     }
-    cout << "Total Nilai " << total;
+    cout << "Total Nilai Rp." << total;
+    cout << endl;
 }
 
 void tampilkanSemua() {
@@ -221,10 +187,6 @@ tambahBelakangProduk("MSG",1500,10);
 tambahDepanProduk("Saus",7500,56);
 tampilkanSemua();
 
-ubahBelakang("wistersitersuase",50000,23);
-ubahDepan("Kimchi",23000,10);
-tampilkanSemua();
-
 hapusBelakang();
 hapusDepan();
 tampilkanSemua();
@@ -239,22 +201,24 @@ int posisi;
 do {
 
     cout << "Menu Inventaris Toko" << endl;
-    cout << "1. Tambah Produk" << endl;//dah
-    cout << "2. Hapus Produk" << endl;//dah
-    cout << "3. Perbarui Produk" << endl;//dah
-    cout << "4. Cari Produk" << endl;//dah
-    cout << "5. Tampilkan Semua Produk" << endl;//dah
-    cout << "6. Hitung Total Nilai Inventaris" << endl;//dah
+    cout << "1. Tambah Produk" << endl;
+    cout << "2. Hapus Produk" << endl;
+    cout << "3. Perbarui Produk" << endl;
+    cout << "4. Cari Produk" << endl;
+    cout << "5. Tampilkan Semua Produk" << endl;
+    cout << "6. Hitung Total Nilai Inventaris" << endl;
     cout << "0. Exit" << endl;
     cout << "Pilih Nomer : ";
     cin >> pilih1;
+    cout << endl;
 
     switch (pilih1){
 
     case 1:
-            cout << "1. Depan" << endl;
-            cout << "2. Tengah" << endl;
-            cout << "3. Belakang" << endl;
+            cout << "Tambahkan produk baru ke bagian:" << endl;
+            cout << "1. Awal list" << endl;
+            cout << "2. Tengah list" << endl;
+            cout << "3. Akhir list" << endl;
             cout << "Pilih nomer : ";
             cin >> pilih2;
             switch (pilih2) {
@@ -282,9 +246,10 @@ do {
             break;
 
         case 2:
-            cout << "1. Depan" << endl;
-            cout << "2. Tengah" << endl;
-            cout << "3. Belakang" << endl;
+            cout << "Hapus produk di bagian:" << endl;
+            cout << "1. Awal list" << endl;
+            cout << "2. Tengah list" << endl;
+            cout << "3. Akhir list" << endl;
             cout << "Pilih nomer : ";
             cin >> pilih2;
             switch (pilih2) {
@@ -311,12 +276,14 @@ do {
             cur = head;
             while (cur != NULL) {
                 if (cur->produk == produk) {
+                    cout << "Masukkan nama produk baru: ";
+                    cin >> produkBaru;
                     cout << "Masukkan harga baru: ";
                     cin >> hargaBaru;
                     cout << "Masukkan stok baru: ";
                     cin >> stokBaru;
 
-                    ubahProduk(produk, hargaBaru, stokBaru, posisi);
+                    ubahProduk(produkBaru, hargaBaru, stokBaru);
                     cout << "Produk " << produk << " diperbarui" << endl;
                     break;
                 }
