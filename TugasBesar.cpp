@@ -23,17 +23,6 @@ bool isEmpty(){
     }
 }
 
-int jumlahList(){
-
-    cur = head;
-    int jumlah = 0;
-    while(cur != NULL){
-        jumlah++;
-        cur = cur->next;
-    }
-    return jumlah;
-}
-
 void createList(string produk, int harga, int stok){
 
     head = new Toko();
@@ -149,7 +138,6 @@ void cariProduk(string produk) {
     }
 }
 
-
 void totalHarga(){
     int total = 0;
     cur = head;
@@ -181,14 +169,11 @@ void tampilkanSemua() {
 
 int main(){
 
-createList("kayu manus",3000,10);
-tambahDepanProduk("kecap",2000,5);
-tambahBelakangProduk("MSG",1500,10);
-tambahDepanProduk("Saus",7500,56);
-tampilkanSemua();
-
-hapusBelakang();
-hapusDepan();
+createList("Samyang",25500,22);
+tambahDepanProduk("Kaldu jamur",3200,43);
+tambahBelakangProduk("Torabika",17900,34);
+tambahDepanProduk("Indomie goreng",3100,56);
+tambahBelakangProduk("Esse change",33900,27);
 tampilkanSemua();
 
 int pilih1,pilih2;
@@ -199,7 +184,7 @@ int stokBaru;
 int posisi;
 
 do {
-
+    cout << endl;
     cout << "Menu Inventaris Toko" << endl;
     cout << "1. Tambah Produk" << endl;
     cout << "2. Hapus Produk" << endl;
@@ -252,6 +237,7 @@ do {
             cout << "3. Akhir list" << endl;
             cout << "Pilih nomer : ";
             cin >> pilih2;
+
             switch (pilih2) {
             case 1:
                 hapusDepan();
@@ -298,15 +284,16 @@ do {
             cout << "Nama Produk yang ingin dicari: ";
             cin >> produk;
             cariProduk(produk);
-            break;
+            system("pause");
 
         case 5:
             tampilkanSemua();
-            break;
+            system("pause");
 
         case 6:
             totalHarga();
-            break;
+            system("pause");
+
     case 0:
         cout << "Anda Telah Keluar";
         return 0;
