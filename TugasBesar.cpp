@@ -170,11 +170,10 @@ void tampilkanSemua() {
 int main(){
 
 createList("Samyang",25500,22);
-tambahDepanProduk("Kaldu jamur",3200,43);
+tambahDepanProduk("MSG",3200,43);
 tambahBelakangProduk("Torabika",17900,34);
-tambahDepanProduk("Indomie goreng",3100,56);
-tambahBelakangProduk("Esse change",33900,27);
-tampilkanSemua();
+tambahBelakangProduk("Kopiko",9500,42);
+tambahDepanProduk("Indomie",3100,56);
 
 int pilih1,pilih2;
 string produk;
@@ -184,8 +183,8 @@ int stokBaru;
 int posisi;
 
 do {
-    cout << endl;
-    cout << "Menu Inventaris Toko" << endl;
+    cout << "\n"<< endl;
+    cout << ">>>>>Menu Inventaris Toko<<<<<" << endl;
     cout << "1. Tambah Produk" << endl;
     cout << "2. Hapus Produk" << endl;
     cout << "3. Perbarui Produk" << endl;
@@ -206,11 +205,14 @@ do {
             cout << "3. Akhir list" << endl;
             cout << "Pilih nomer : ";
             cin >> pilih2;
+            cout << endl;
+
             switch (pilih2) {
             case 1:
                 cout << "Masukkan nama produk, harga, dan stok baru: ";
                 cin >> produkBaru >> hargaBaru >> stokBaru;
                 tambahDepanProduk(produkBaru, hargaBaru, stokBaru);
+                cout << "Produk " << produkBaru << " berhasil ditambahkan ke dalam list";
                 break;
             case 2:
                 cout << "Masukkan posisi (nomor urut) untuk tambah tengah: ";
@@ -218,11 +220,13 @@ do {
                 cout << "Masukkan nama produk, harga, dan stok baru: ";
                 cin >> produkBaru >> hargaBaru >> stokBaru;
                 tambahTengahProduk(produkBaru, hargaBaru, stokBaru, posisi);
+                cout << "Produk " << produkBaru << " berhasil ditambahkan ke dalam list";
                 break;
             case 3:
                 cout << "Masukkan nama produk, harga, dan stok baru: ";
                 cin >> produkBaru >> hargaBaru >> stokBaru;
                 tambahBelakangProduk(produkBaru, hargaBaru, stokBaru);
+                cout << "Produk " << produkBaru << " berhasil ditambahkan ke dalam list";
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
@@ -237,18 +241,22 @@ do {
             cout << "3. Akhir list" << endl;
             cout << "Pilih nomer : ";
             cin >> pilih2;
+            cout << endl;
 
             switch (pilih2) {
             case 1:
                 hapusDepan();
+                cout << "Produk di awal list berhasil dihapus";
                 break;
             case 2:
                 cout << "Masukkan posisi (nomor urut) untuk hapus tengah: ";
                 cin >> posisi;
                 hapusTengah(posisi);
+                cout << "Produk di posisi ke-"<< posisi << "list berhasil dihapus";
                 break;
             case 3:
                 hapusBelakang();
+                cout << "Produk di akhir list berhasil dihapus";
                 break;
             default:
                 cout << "Pilihan tidak valid." << endl;
@@ -270,7 +278,7 @@ do {
                     cin >> stokBaru;
 
                     ubahProduk(produkBaru, hargaBaru, stokBaru);
-                    cout << "Produk " << produk << " diperbarui" << endl;
+                    cout << "Produk " << produk << " diperbarui " << "menjadi " << produkBaru << endl;
                     break;
                 }
                 cur = cur->next;
@@ -284,18 +292,19 @@ do {
             cout << "Nama Produk yang ingin dicari: ";
             cin >> produk;
             cariProduk(produk);
-            system("pause");
+            break;
 
         case 5:
             tampilkanSemua();
-            system("pause");
+            break;
 
         case 6:
             totalHarga();
-            system("pause");
+            break;
 
     case 0:
-        cout << "Anda Telah Keluar";
+        cout << "ANDA TELAH KELUAR (˶ᵔ ᵕ ᵔ˶)";
+        cout << "\n" <<endl;
         return 0;
     default:
         cout << "Pilih yang bener (˶˃⤙˂˶)";
